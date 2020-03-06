@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 52;
+	objectVersion = 50;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -17,7 +17,7 @@
 		D269E0932410F46D000495C3 /* DoableUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D269E0922410F46D000495C3 /* DoableUITests.swift */; };
 		D269E0A224114CDC000495C3 /* Store.swift in Sources */ = {isa = PBXBuildFile; fileRef = D269E0A124114CDC000495C3 /* Store.swift */; };
 		D269E0A424114CFB000495C3 /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = D269E0A324114CFB000495C3 /* AppState.swift */; };
-		D269E0BA241271E5000495C3 /* EnumProperties in Frameworks */ = {isa = PBXBuildFile; productRef = D269E0B9241271E5000495C3 /* EnumProperties */; };
+		D269E0BE24129559000495C3 /* AppAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = D269E0BD24129559000495C3 /* AppAction.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -54,6 +54,7 @@
 		D269E0942410F46D000495C3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D269E0A124114CDC000495C3 /* Store.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Store.swift; sourceTree = "<group>"; };
 		D269E0A324114CFB000495C3 /* AppState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
+		D269E0BD24129559000495C3 /* AppAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppAction.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -61,7 +62,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D269E0BA241271E5000495C3 /* EnumProperties in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -109,6 +109,7 @@
 				D269E0722410F46C000495C3 /* SceneDelegate.swift */,
 				D269E0742410F46C000495C3 /* ContentView.swift */,
 				D269E0A124114CDC000495C3 /* Store.swift */,
+				D269E0BD24129559000495C3 /* AppAction.swift */,
 				D269E0A324114CFB000495C3 /* AppState.swift */,
 				D269E0A024110376000495C3 /* Resources */,
 				D269E0782410F46D000495C3 /* Preview Content */,
@@ -169,7 +170,6 @@
 			);
 			name = Doable;
 			packageProductDependencies = (
-				D269E0B9241271E5000495C3 /* EnumProperties */,
 			);
 			productName = Doable;
 			productReference = D269E06D2410F46C000495C3 /* Doable.app */;
@@ -244,7 +244,6 @@
 			);
 			mainGroup = D269E0642410F46C000495C3;
 			packageReferences = (
-				D269E0B8241271E5000495C3 /* XCRemoteSwiftPackageReference "swift-enum-properties" */,
 			);
 			productRefGroup = D269E06E2410F46C000495C3 /* Products */;
 			projectDirPath = "";
@@ -290,6 +289,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D269E0712410F46C000495C3 /* AppDelegate.swift in Sources */,
+				D269E0BE24129559000495C3 /* AppAction.swift in Sources */,
 				D269E0A424114CFB000495C3 /* AppState.swift in Sources */,
 				D269E0732410F46C000495C3 /* SceneDelegate.swift in Sources */,
 				D269E0752410F46C000495C3 /* ContentView.swift in Sources */,
@@ -618,25 +618,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCRemoteSwiftPackageReference section */
-		D269E0B8241271E5000495C3 /* XCRemoteSwiftPackageReference "swift-enum-properties" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/pointfreeco/swift-enum-properties.git";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 0.1.0;
-			};
-		};
-/* End XCRemoteSwiftPackageReference section */
-
-/* Begin XCSwiftPackageProductDependency section */
-		D269E0B9241271E5000495C3 /* EnumProperties */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = D269E0B8241271E5000495C3 /* XCRemoteSwiftPackageReference "swift-enum-properties" */;
-			productName = EnumProperties;
-		};
-/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = D269E0652410F46C000495C3 /* Project object */;
 }

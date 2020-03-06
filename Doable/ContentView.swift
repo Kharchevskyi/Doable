@@ -38,27 +38,26 @@ struct ContentView: View {
     }
 }
 
+struct ContentView_Previews: PreviewProvider {
+    static var previews: some View {
+        ContentView.build()
+    }
+}
+
 
 enum CounterAction {
     case incrTap, decrTap
 }
 
+func counterReducer(state: inout Int, action: CounterAction) {
+    switch action {
+    case .incrTap: state += 1
+    case .decrTap: state -= 1
+    }
+}
+
 enum GoalAction {
     case save, remove
-}
-
-enum AppAction {
-    case counter(CounterAction)
-    case goal(GoalAction)
-}
-
-
-func counterReducer(state: inout Int, action: AppAction) {
-    switch action {
-    case .counter(.incrTap): state += 1
-    case .counter(.decrTap): state -= 1
-    default: break
-    }
 }
 
 func goalReducer(state: inout AppState, action: AppAction) {
@@ -69,22 +68,8 @@ func goalReducer(state: inout AppState, action: AppAction) {
     }
 }
 
-//
-//func appReducer(value: inout AppState, action: AppAction) {
-//    switch action {
-//    case .counter(.incrTap): value.title = "Doable + 1"
-//    case .counter(.decrTap): value.title = "Doable - 1"
-//    case .goal(.save): value.title = "Goal added"
-//    case .goal(.remove): value.title = "Goal replaced"
-//    }
-//}
 
 
-struct ContentView_Previews: PreviewProvider {
-    static var previews: some View {
-        ContentView.build()
-    }
-}
 
 
 func combine<Value, Action>(
@@ -102,4 +87,11 @@ func pullback<LocalValue, GlobalValue, Action>(
     return { globalValue, action in
         reducer(&globalValue[keyPath: value], action)
     }
+}
+
+
+func pullback<GlobalAction, LocalAction, Value> (
+    _ reducer: (inout Value, LocalAction) -> Void
+) -> (inout Value, GlobalAction) -> Void {
+
 }
