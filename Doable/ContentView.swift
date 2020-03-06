@@ -26,7 +26,7 @@ struct ContentView: View {
 
     static func build() -> ContentView {
         let appReducer = combine(
-            pullback(counterReducer, value: \.count),
+            pullback(counterReducer, value: \.count, action: \.counter),
             goalReducer
         )
         return ContentView(
@@ -80,18 +80,15 @@ func combine<Value, Action>(
     }
 }
 
-func pullback<LocalValue, GlobalValue, Action>(
-    _ reducer: @escaping (inout LocalValue, Action) -> Void,
-    value: WritableKeyPath<GlobalValue, LocalValue>
-) -> (inout GlobalValue, Action) -> Void {
-    return { globalValue, action in
-        reducer(&globalValue[keyPath: value], action)
+
+func pullback<GlobalAction, LocalAction, GlobalValue, LocalValue>(
+    _ reducer: @escaping (inout LocalValue, LocalAction) -> Void,
+    value: WritableKeyPath<GlobalValue, LocalValue>,
+    action: WritableKeyPath<GlobalAction, LocalAction?>
+) -> (inout GlobalValue, GlobalAction) -> Void {
+    return { globalValue, globalAction in
+        guard let localAction = globalAction[keyPath: action] else { return }
+        var localValue = globalValue[keyPath: value]
+        reducer(&localValue, localAction)
     }
-}
-
-
-func pullback<GlobalAction, LocalAction, Value> (
-    _ reducer: (inout Value, LocalAction) -> Void
-) -> (inout Value, GlobalAction) -> Void {
-
 }
