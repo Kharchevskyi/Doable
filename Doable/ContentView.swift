@@ -76,7 +76,9 @@ func combine<Value, Action>(
     _ reducers: (inout Value, Action) -> Void...
 ) -> (inout Value, Action) -> Void {
     return { value, action in
-        reducers.forEach { $0(&value, action) }
+        for reducer in reducers {
+            reducer(&value, action)
+        }
     }
 }
 
@@ -88,7 +90,6 @@ func pullback<GlobalAction, LocalAction, GlobalValue, LocalValue>(
 ) -> (inout GlobalValue, GlobalAction) -> Void {
     return { globalValue, globalAction in
         guard let localAction = globalAction[keyPath: action] else { return }
-        var localValue = globalValue[keyPath: value]
-        reducer(&localValue, localAction)
+        reducer(&globalValue[keyPath: value], localAction)
     }
 }

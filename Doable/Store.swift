@@ -19,5 +19,6 @@ final class Store<Value, Action>: ObservableObject {
 
     func send(_ action: Action) {
         reducer(&value, action)
+        print(value)
     }
 }
