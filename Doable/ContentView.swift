@@ -7,6 +7,7 @@
 //
 
 import SwiftUI
+import ComposableArchitecture
 
 struct ContentView: View {
     @ObservedObject var store: Store<AppState, AppAction>
@@ -29,10 +30,12 @@ struct ContentView: View {
             pullback(counterReducer, value: \.count, action: \.counter),
             goalReducer
         )
+
+        let reducer = with(appReducer, f: logging)
         return ContentView(
             store: Store(
                 initialValue: AppState(),
-                reducer: appReducer
+                reducer: reducer
             )
         )
     }
@@ -65,31 +68,5 @@ func goalReducer(state: inout AppState, action: AppAction) {
     case .goal(.save): state.title = "Goal added"
     case .goal(.remove): state.title = "Goal replaced"
     default: break
-    }
-}
-
-
-
-
-
-func combine<Value, Action>(
-    _ reducers: (inout Value, Action) -> Void...
-) -> (inout Value, Action) -> Void {
-    return { value, action in
-        for reducer in reducers {
-            reducer(&value, action)
-        }
-    }
-}
-
-
-func pullback<GlobalAction, LocalAction, GlobalValue, LocalValue>(
-    _ reducer: @escaping (inout LocalValue, LocalAction) -> Void,
-    value: WritableKeyPath<GlobalValue, LocalValue>,
-    action: WritableKeyPath<GlobalAction, LocalAction?>
-) -> (inout GlobalValue, GlobalAction) -> Void {
-    return { globalValue, globalAction in
-        guard let localAction = globalAction[keyPath: action] else { return }
-        reducer(&globalValue[keyPath: value], localAction)
     }
 }

@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -15,9 +15,11 @@
 		D269E07D2410F46D000495C3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D269E07B2410F46D000495C3 /* LaunchScreen.storyboard */; };
 		D269E0882410F46D000495C3 /* DoableTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D269E0872410F46D000495C3 /* DoableTests.swift */; };
 		D269E0932410F46D000495C3 /* DoableUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D269E0922410F46D000495C3 /* DoableUITests.swift */; };
-		D269E0A224114CDC000495C3 /* Store.swift in Sources */ = {isa = PBXBuildFile; fileRef = D269E0A124114CDC000495C3 /* Store.swift */; };
 		D269E0A424114CFB000495C3 /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = D269E0A324114CFB000495C3 /* AppState.swift */; };
 		D269E0BE24129559000495C3 /* AppAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = D269E0BD24129559000495C3 /* AppAction.swift */; };
+		D269E0C02415946B000495C3 /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = D269E0BF2415946B000495C3 /* Logger.swift */; };
+		D269E0C2241595BC000495C3 /* With.swift in Sources */ = {isa = PBXBuildFile; fileRef = D269E0C1241595BC000495C3 /* With.swift */; };
+		D269E0CA24159EBD000495C3 /* ComposableArchitecture in Frameworks */ = {isa = PBXBuildFile; productRef = D269E0C924159EBD000495C3 /* ComposableArchitecture */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -52,9 +54,11 @@
 		D269E08E2410F46D000495C3 /* DoableUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DoableUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D269E0922410F46D000495C3 /* DoableUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoableUITests.swift; sourceTree = "<group>"; };
 		D269E0942410F46D000495C3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		D269E0A124114CDC000495C3 /* Store.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Store.swift; sourceTree = "<group>"; };
 		D269E0A324114CFB000495C3 /* AppState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
 		D269E0BD24129559000495C3 /* AppAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppAction.swift; sourceTree = "<group>"; };
+		D269E0BF2415946B000495C3 /* Logger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Logger.swift; sourceTree = "<group>"; };
+		D269E0C1241595BC000495C3 /* With.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = With.swift; sourceTree = "<group>"; };
+		D269E0C724159D28000495C3 /* ComposableArchitecture */ = {isa = PBXFileReference; lastKnownFileType = folder; path = ComposableArchitecture; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,6 +66,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D269E0CA24159EBD000495C3 /* ComposableArchitecture in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -85,10 +90,12 @@
 		D269E0642410F46C000495C3 = {
 			isa = PBXGroup;
 			children = (
+				D269E0C724159D28000495C3 /* ComposableArchitecture */,
 				D269E06F2410F46C000495C3 /* Doable */,
 				D269E0862410F46D000495C3 /* DoableTests */,
 				D269E0912410F46D000495C3 /* DoableUITests */,
 				D269E06E2410F46C000495C3 /* Products */,
+				D269E0C824159EBD000495C3 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -108,7 +115,8 @@
 				D269E0702410F46C000495C3 /* AppDelegate.swift */,
 				D269E0722410F46C000495C3 /* SceneDelegate.swift */,
 				D269E0742410F46C000495C3 /* ContentView.swift */,
-				D269E0A124114CDC000495C3 /* Store.swift */,
+				D269E0C3241596EB000495C3 /* Functional Extensions */,
+				D269E0BF2415946B000495C3 /* Logger.swift */,
 				D269E0BD24129559000495C3 /* AppAction.swift */,
 				D269E0A324114CFB000495C3 /* AppState.swift */,
 				D269E0A024110376000495C3 /* Resources */,
@@ -153,6 +161,21 @@
 			path = Resources;
 			sourceTree = "<group>";
 		};
+		D269E0C3241596EB000495C3 /* Functional Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				D269E0C1241595BC000495C3 /* With.swift */,
+			);
+			path = "Functional Extensions";
+			sourceTree = "<group>";
+		};
+		D269E0C824159EBD000495C3 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -170,6 +193,7 @@
 			);
 			name = Doable;
 			packageProductDependencies = (
+				D269E0C924159EBD000495C3 /* ComposableArchitecture */,
 			);
 			productName = Doable;
 			productReference = D269E06D2410F46C000495C3 /* Doable.app */;
@@ -289,11 +313,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				D269E0712410F46C000495C3 /* AppDelegate.swift in Sources */,
+				D269E0C2241595BC000495C3 /* With.swift in Sources */,
 				D269E0BE24129559000495C3 /* AppAction.swift in Sources */,
 				D269E0A424114CFB000495C3 /* AppState.swift in Sources */,
 				D269E0732410F46C000495C3 /* SceneDelegate.swift in Sources */,
+				D269E0C02415946B000495C3 /* Logger.swift in Sources */,
 				D269E0752410F46C000495C3 /* ContentView.swift in Sources */,
-				D269E0A224114CDC000495C3 /* Store.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -618,6 +643,13 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		D269E0C924159EBD000495C3 /* ComposableArchitecture */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = ComposableArchitecture;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = D269E0652410F46C000495C3 /* Project object */;
 }
