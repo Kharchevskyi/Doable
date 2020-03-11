@@ -1,8 +1,11 @@
 import SwiftUI
+import Combine
 
 public final class Store<Value, Action>: ObservableObject {
     let reducer: (inout Value, Action) -> Void
     @Published public private(set) var value: Value
+    private var cancelable: Cancellable?
+
 
     public init(initialValue: Value, reducer: @escaping (inout Value, Action) -> Void) {
         self.value = initialValue
@@ -11,6 +14,25 @@ public final class Store<Value, Action>: ObservableObject {
 
     public func send(_ action: Action) {
         reducer(&value, action)
+    }
+
+    public func view<LocalValue, LocalAction>(
+        view toLocalView: @escaping (Value) -> (LocalValue),
+        action toGlobalAction: @escaping(LocalAction) -> Action
+    ) -> Store<LocalValue, LocalAction> {
+        let localStore = Store<LocalValue, LocalAction>(
+            initialValue: toLocalView(self.value),
+            reducer: { localValue, localAction in
+                self.send(toGlobalAction(localAction))
+                localValue = toLocalView(self.value)
+            }
+        )
+
+        localStore.cancelable = self.$value.sink { [weak localStore] newValue in
+            localStore?.value = toLocalView(newValue)
+        }
+
+        return localStore
     }
 }
 

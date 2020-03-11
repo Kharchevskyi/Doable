@@ -20,6 +20,8 @@
 		D269E0C02415946B000495C3 /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = D269E0BF2415946B000495C3 /* Logger.swift */; };
 		D269E0C2241595BC000495C3 /* With.swift in Sources */ = {isa = PBXBuildFile; fileRef = D269E0C1241595BC000495C3 /* With.swift */; };
 		D269E0CA24159EBD000495C3 /* ComposableArchitecture in Frameworks */ = {isa = PBXBuildFile; productRef = D269E0C924159EBD000495C3 /* ComposableArchitecture */; };
+		D269E0CC241818C7000495C3 /* LocalCountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D269E0CB241818C7000495C3 /* LocalCountView.swift */; };
+		D269E0CE24181B3C000495C3 /* InitialView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D269E0CD24181B3B000495C3 /* InitialView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -59,6 +61,8 @@
 		D269E0BF2415946B000495C3 /* Logger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Logger.swift; sourceTree = "<group>"; };
 		D269E0C1241595BC000495C3 /* With.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = With.swift; sourceTree = "<group>"; };
 		D269E0C724159D28000495C3 /* ComposableArchitecture */ = {isa = PBXFileReference; lastKnownFileType = folder; path = ComposableArchitecture; sourceTree = "<group>"; };
+		D269E0CB241818C7000495C3 /* LocalCountView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalCountView.swift; sourceTree = "<group>"; };
+		D269E0CD24181B3B000495C3 /* InitialView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitialView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -114,7 +118,9 @@
 			children = (
 				D269E0702410F46C000495C3 /* AppDelegate.swift */,
 				D269E0722410F46C000495C3 /* SceneDelegate.swift */,
+				D269E0CD24181B3B000495C3 /* InitialView.swift */,
 				D269E0742410F46C000495C3 /* ContentView.swift */,
+				D269E0CB241818C7000495C3 /* LocalCountView.swift */,
 				D269E0C3241596EB000495C3 /* Functional Extensions */,
 				D269E0BF2415946B000495C3 /* Logger.swift */,
 				D269E0BD24129559000495C3 /* AppAction.swift */,
@@ -318,6 +324,8 @@
 				D269E0A424114CFB000495C3 /* AppState.swift in Sources */,
 				D269E0732410F46C000495C3 /* SceneDelegate.swift in Sources */,
 				D269E0C02415946B000495C3 /* Logger.swift in Sources */,
+				D269E0CE24181B3C000495C3 /* InitialView.swift in Sources */,
+				D269E0CC241818C7000495C3 /* LocalCountView.swift in Sources */,
 				D269E0752410F46C000495C3 /* ContentView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
