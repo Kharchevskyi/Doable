@@ -7,10 +7,12 @@
 //
 
 import Foundation
+import Signing
 
 enum AppAction {
     case counter(CounterAction)
     case goal(GoalAction)
+    case signing(SigningAction)
 
     var counter: CounterAction? {
         get {

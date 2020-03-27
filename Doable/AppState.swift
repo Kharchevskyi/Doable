@@ -11,4 +11,5 @@ import Foundation
 struct AppState {
     var title = "Doable"
     var count = 0
+    var isLoggedIn = false
 }

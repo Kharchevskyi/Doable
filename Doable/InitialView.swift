@@ -10,6 +10,7 @@ import Foundation
 
 import SwiftUI
 import ComposableArchitecture
+import Signing
 
 struct InitialView: View {
     @ObservedObject var store: Store<AppState, AppAction>
@@ -30,6 +31,14 @@ struct InitialView: View {
                     "Content view",
                     destination: ContentView(
                         store: store
+                    )
+                )
+                NavigationLink(
+                    "Login view",
+                    destination: LoginView(
+                        store: store.view(
+                            view: { $0.isLoggedIn },
+                            action: <#T##(LocalAction) -> AppAction#>)
                     )
                 )
                 .navigationBarTitle("Initial View")

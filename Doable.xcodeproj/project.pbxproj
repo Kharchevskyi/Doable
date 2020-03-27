@@ -25,6 +25,8 @@
 		D2FF695A242E5A9D007182F0 /* FacebookCore in Frameworks */ = {isa = PBXBuildFile; productRef = D2FF6959242E5A9D007182F0 /* FacebookCore */; };
 		D2FF695C242E5A9D007182F0 /* FacebookLogin in Frameworks */ = {isa = PBXBuildFile; productRef = D2FF695B242E5A9D007182F0 /* FacebookLogin */; };
 		D2FF695E242E5A9D007182F0 /* FacebookShare in Frameworks */ = {isa = PBXBuildFile; productRef = D2FF695D242E5A9D007182F0 /* FacebookShare */; };
+		D2FF6961242E5B99007182F0 /* Signing in Frameworks */ = {isa = PBXBuildFile; productRef = D2FF6960242E5B99007182F0 /* Signing */; };
+		D2FF6964242E640D007182F0 /* EnumProperties in Frameworks */ = {isa = PBXBuildFile; productRef = D2FF6963242E640D007182F0 /* EnumProperties */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -66,6 +68,7 @@
 		D269E0C724159D28000495C3 /* ComposableArchitecture */ = {isa = PBXFileReference; lastKnownFileType = folder; path = ComposableArchitecture; sourceTree = "<group>"; };
 		D269E0CB241818C7000495C3 /* LocalCountView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalCountView.swift; sourceTree = "<group>"; };
 		D269E0CD24181B3B000495C3 /* InitialView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitialView.swift; sourceTree = "<group>"; };
+		D2FF695F242E5B33007182F0 /* Signing */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Signing; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -75,7 +78,9 @@
 			files = (
 				D269E0CA24159EBD000495C3 /* ComposableArchitecture in Frameworks */,
 				D2FF695A242E5A9D007182F0 /* FacebookCore in Frameworks */,
+				D2FF6961242E5B99007182F0 /* Signing in Frameworks */,
 				D2FF695E242E5A9D007182F0 /* FacebookShare in Frameworks */,
+				D2FF6964242E640D007182F0 /* EnumProperties in Frameworks */,
 				D2FF695C242E5A9D007182F0 /* FacebookLogin in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -100,6 +105,7 @@
 		D269E0642410F46C000495C3 = {
 			isa = PBXGroup;
 			children = (
+				D2FF695F242E5B33007182F0 /* Signing */,
 				D269E0C724159D28000495C3 /* ComposableArchitecture */,
 				D269E06F2410F46C000495C3 /* Doable */,
 				D269E0862410F46D000495C3 /* DoableTests */,
@@ -209,6 +215,8 @@
 				D2FF6959242E5A9D007182F0 /* FacebookCore */,
 				D2FF695B242E5A9D007182F0 /* FacebookLogin */,
 				D2FF695D242E5A9D007182F0 /* FacebookShare */,
+				D2FF6960242E5B99007182F0 /* Signing */,
+				D2FF6963242E640D007182F0 /* EnumProperties */,
 			);
 			productName = Doable;
 			productReference = D269E06D2410F46C000495C3 /* Doable.app */;
@@ -284,6 +292,7 @@
 			mainGroup = D269E0642410F46C000495C3;
 			packageReferences = (
 				D2FF6958242E5A9D007182F0 /* XCRemoteSwiftPackageReference "facebook-ios-sdk" */,
+				D2FF6962242E640D007182F0 /* XCRemoteSwiftPackageReference "swift-enum-properties" */,
 			);
 			productRefGroup = D269E06E2410F46C000495C3 /* Products */;
 			projectDirPath = "";
@@ -671,6 +680,14 @@
 				minimumVersion = 6.3.0;
 			};
 		};
+		D2FF6962242E640D007182F0 /* XCRemoteSwiftPackageReference "swift-enum-properties" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/pointfreeco/swift-enum-properties.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.1.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -692,6 +709,15 @@
 			isa = XCSwiftPackageProductDependency;
 			package = D2FF6958242E5A9D007182F0 /* XCRemoteSwiftPackageReference "facebook-ios-sdk" */;
 			productName = FacebookShare;
+		};
+		D2FF6960242E5B99007182F0 /* Signing */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = Signing;
+		};
+		D2FF6963242E640D007182F0 /* EnumProperties */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = D2FF6962242E640D007182F0 /* XCRemoteSwiftPackageReference "swift-enum-properties" */;
+			productName = EnumProperties;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
