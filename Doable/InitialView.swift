@@ -37,9 +37,7 @@ struct InitialView: View {
                     "Login view",
                     destination: LoginView(
                         store: store.view(
-                            view: {
-                                $0.signingState
-                            },
+                            view: { $0.signingState },
                             action: { .signing($0) }
                         )
                     )

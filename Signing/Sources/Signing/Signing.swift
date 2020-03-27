@@ -14,12 +14,6 @@ public struct SigningState {
     public init(_ isLoggedIn: Bool) {
         self.isLoggedIn = isLoggedIn
     }
-
-    var title: String {
-        isLoggedIn
-            ? "Log out"
-            : "Log in"
-    }
 }
 
 public func signinReducer(state: inout SigningState, action: SigningAction) {
@@ -33,6 +27,12 @@ public func signinReducer(state: inout SigningState, action: SigningAction) {
 
 public struct LoginView: View {
     @ObservedObject var store: Store<SigningState, SigningAction>
+    @State var isButtonDisabled = false
+    private var title: String {
+        self.store.value.isLoggedIn ? "Log out" : "Log in"
+    }
+
+    private let manager = LoginManager.init()
 
     public init(store: Store<SigningState, SigningAction>) {
         self.store = store
@@ -41,12 +41,31 @@ public struct LoginView: View {
     public var body: some View {
         NavigationView {
             //                FacebookButton()
-            Button("\(String(self.store.value.isLoggedIn))") {
+            Button(self.title) {
                 self.store.value.isLoggedIn
-                    ? self.store.send(.facebookLogOut)
-                    : self.store.send(.facebookLogIn)
+                    ? self.logout()
+                    : self.login()
             }
+            .disabled(isButtonDisabled)
         }
+    }
+
+    private func login() {
+        self.isButtonDisabled = true
+        manager.logIn(
+            permissions: [.publicProfile],
+            viewController: nil) { result in
+                switch result {
+                case .success: self.store.send(.facebookLogIn)
+                default: self.store.send(.facebookLogOut)
+                }
+                self.isButtonDisabled = false
+            }
+    }
+
+    private func logout() {
+        manager.logOut()
+        store.send(.facebookLogOut)
     }
 }
 
@@ -55,16 +74,10 @@ public struct LoginView: View {
 struct FacebookButton: UIViewRepresentable {
 
     func makeUIView(context: Context) -> UIButton {
-        return FBLoginButton.init()
+        FBLoginButton.init()
     }
 
     func updateUIView(_ uiView: UIButton, context: UIViewRepresentableContext<FacebookButton>) {
-        print("^^ \(uiView)")
+
     }
 }
-
-//final class CustomLoginButton: UIButton {
-//    override init(frame: CGRect) {
-//        super.init(frame: frame)
-//    }
-//}
