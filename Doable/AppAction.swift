@@ -35,4 +35,15 @@ enum AppAction {
             self = .goal(newValue)
         }
     }
+
+    var signing: SigningAction? {
+        get {
+            guard case let .signing(value) = self else { return nil }
+            return value
+        }
+        set {
+            guard case .signing = self, let newValue = newValue else { return }
+            self = .signing(newValue)
+        }
+    }
 }

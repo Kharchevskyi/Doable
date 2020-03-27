@@ -7,9 +7,21 @@
 //
 
 import Foundation
+import Signing
 
 struct AppState {
     var title = "Doable"
     var count = 0
     var isLoggedIn = false
+}
+
+extension AppState {
+    var signingState: SigningState {
+        get {
+            SigningState(isLoggedIn)
+        }
+        set {
+            self.isLoggedIn = newValue.isLoggedIn
+        }
+    }
 }

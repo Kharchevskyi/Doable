@@ -9,10 +9,20 @@ public enum SigningAction {
 }
 
 public struct SigningState {
-    var isLoggedIn: Bool
+    public var isLoggedIn: Bool
+
+    public init(_ isLoggedIn: Bool) {
+        self.isLoggedIn = isLoggedIn
+    }
+
+    var title: String {
+        isLoggedIn
+            ? "Log out"
+            : "Log in"
+    }
 }
 
-public func signingReducer(state: inout SigningState, action: SigningAction) {
+public func signinReducer(state: inout SigningState, action: SigningAction) {
     switch action {
     case .facebookLogIn:
         state.isLoggedIn = true
@@ -25,22 +35,22 @@ public struct LoginView: View {
     @ObservedObject var store: Store<SigningState, SigningAction>
 
     public init(store: Store<SigningState, SigningAction>) {
-      self.store = store
+        self.store = store
     }
 
     public var body: some View {
         NavigationView {
-            List {
-                FacebookButton()
-                Button("Login") {
-                    self.store.value.isLoggedIn
-                        ? self.store.send(.facebookLogOut)
-                        : self.store.send(.facebookLogIn)
-                }
+            //                FacebookButton()
+            Button("\(String(self.store.value.isLoggedIn))") {
+                self.store.value.isLoggedIn
+                    ? self.store.send(.facebookLogOut)
+                    : self.store.send(.facebookLogIn)
             }
         }
     }
 }
+
+
 
 struct FacebookButton: UIViewRepresentable {
 

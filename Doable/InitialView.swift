@@ -37,8 +37,11 @@ struct InitialView: View {
                     "Login view",
                     destination: LoginView(
                         store: store.view(
-                            view: { $0.isLoggedIn },
-                            action: <#T##(LocalAction) -> AppAction#>)
+                            view: {
+                                $0.signingState
+                            },
+                            action: { .signing($0) }
+                        )
                     )
                 )
                 .navigationBarTitle("Initial View")
@@ -47,9 +50,10 @@ struct InitialView: View {
     }
 
     static func build() -> InitialView {
-        let appReducer = combine(
+        let appReducer: (inout AppState, AppAction) -> Void = combine(
             pullback(counterReducer, value: \.count, action: \.counter),
-            goalReducer
+            goalReducer,
+            pullback(signinReducer, value: \.signingState, action: \.signing)
         )
 
         let reducer = with(appReducer, f: logging)
