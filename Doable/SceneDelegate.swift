@@ -8,6 +8,7 @@
 
 import UIKit
 import SwiftUI
+import FacebookCore
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
@@ -15,12 +16,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
-        print("^^ \(#function) \(scene)")
-        // Use this method to optionally configure and attach the UIWindow `window` to the provided UIWindowScene `scene`.
-        // If using a storyboard, the `window` property will automatically be initialized and attached to the scene.
-        // This delegate does not imply the connecting scene or session are new (see `application:configurationForConnectingSceneSession` instead).
 
-        
         let contentView = InitialView.build()
 
         if let windowScene = scene as? UIWindowScene {
@@ -30,5 +26,14 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             window.makeKeyAndVisible()
         }
     }
-}
 
+    func scene(_ scene: UIScene, openURLContexts URLContexts: Set<UIOpenURLContext>) {
+        guard let openURL = URLContexts.first else { return }
+        ApplicationDelegate.shared.application(
+            UIApplication.shared,
+            open: openURL.url,
+            sourceApplication: openURL.options.sourceApplication,
+            annotation: openURL.options.annotation
+        )
+    }
+}
