@@ -16,7 +16,7 @@ public struct SigningState {
     }
 }
 
-public func signinReducer(state: inout SigningState, action: SigningAction) {
+public func signingReducer(state: inout SigningState, action: SigningAction) {
     switch action {
     case .facebookLogIn:
         state.isLoggedIn = true
@@ -28,6 +28,7 @@ public func signinReducer(state: inout SigningState, action: SigningAction) {
 public struct LoginView: View {
     @ObservedObject var store: Store<SigningState, SigningAction>
     @State var isButtonDisabled = false
+
     private var title: String {
         self.store.value.isLoggedIn ? "Log out" : "Log in"
     }

@@ -7,15 +7,18 @@
 //
 
 import Foundation
+import ComposableArchitecture
 
-func logging<Value, Action>(
-    _ reducer: @escaping (inout Value, Action) -> Void
-) -> (inout Value, Action) -> Void {
-    return { value, action in
-        reducer(&value, action)
-        print("Action: \(action)")
-        print("State:")
-        dump(value)
-        print("---")
+func logging<Value, Action>(_ reducer: @escaping Reducer<Value, Action>) -> Reducer<Value, Action> {
+    { value, action in
+        let effect = reducer(&value, action)
+        let newValue = value
+        return {
+            print("Action: \(action)")
+            print("State:")
+            dump(newValue)
+            print("---")
+            effect()
+        }
     }
 }

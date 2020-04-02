@@ -11,6 +11,8 @@ import Foundation
 import SwiftUI
 import ComposableArchitecture
 import Signing
+import GoalSelection
+import GoalsList
 
 struct InitialView: View {
     @ObservedObject var store: Store<AppState, AppAction>
@@ -19,18 +21,21 @@ struct InitialView: View {
         NavigationView {
             List {
                 NavigationLink(
-                    "Local view",
-                    destination: LocalCountView(
+                    "Goals List",
+                    destination: GoalsListView(
                         store: store.view(
-                            view:  { $0.count},
-                            action: { .counter($0) }
+                            view:  { $0.goals },
+                            action: { .goalsList($0) }
                         )
                     )
                 )
                 NavigationLink(
-                    "Content view",
-                    destination: ContentView(
-                        store: store
+                    "Goal Selection",
+                    destination: GoalSelectionView(
+                        store: store.view(
+                            view: { $0.goalSelectionState },
+                            action: { .goalSelection($0) }
+                        )
                     )
                 )
                 NavigationLink(
@@ -49,9 +54,9 @@ struct InitialView: View {
 
     static func build() -> InitialView {
         let appReducer: (inout AppState, AppAction) -> Void = combine(
-            pullback(counterReducer, value: \.count, action: \.counter),
-            goalReducer,
-            pullback(signinReducer, value: \.signingState, action: \.signing)
+            pullback(goalSelectionReducer, value: \.goalSelectionState , action: \.goalSelection),
+            pullback(signingReducer, value: \.signingState, action: \.signing),
+            pullback(goalsListReducer, value: \.goals, action: \.goalsList)
         )
 
         let reducer = with(appReducer, f: logging)

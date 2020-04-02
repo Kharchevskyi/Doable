@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		D269E0712410F46C000495C3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D269E0702410F46C000495C3 /* AppDelegate.swift */; };
 		D269E0732410F46C000495C3 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D269E0722410F46C000495C3 /* SceneDelegate.swift */; };
-		D269E0752410F46C000495C3 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D269E0742410F46C000495C3 /* ContentView.swift */; };
 		D269E0772410F46D000495C3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D269E0762410F46D000495C3 /* Assets.xcassets */; };
 		D269E07A2410F46D000495C3 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D269E0792410F46D000495C3 /* Preview Assets.xcassets */; };
 		D269E07D2410F46D000495C3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D269E07B2410F46D000495C3 /* LaunchScreen.storyboard */; };
@@ -20,8 +19,9 @@
 		D269E0C02415946B000495C3 /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = D269E0BF2415946B000495C3 /* Logger.swift */; };
 		D269E0C2241595BC000495C3 /* With.swift in Sources */ = {isa = PBXBuildFile; fileRef = D269E0C1241595BC000495C3 /* With.swift */; };
 		D269E0CA24159EBD000495C3 /* ComposableArchitecture in Frameworks */ = {isa = PBXBuildFile; productRef = D269E0C924159EBD000495C3 /* ComposableArchitecture */; };
-		D269E0CC241818C7000495C3 /* LocalCountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D269E0CB241818C7000495C3 /* LocalCountView.swift */; };
 		D269E0CE24181B3C000495C3 /* InitialView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D269E0CD24181B3B000495C3 /* InitialView.swift */; };
+		D2A96DD7243617F8001398AA /* GoalsList in Frameworks */ = {isa = PBXBuildFile; productRef = D2A96DD6243617F8001398AA /* GoalsList */; };
+		D2F6D13C2434DE5A00DB4065 /* GoalSelection in Frameworks */ = {isa = PBXBuildFile; productRef = D2F6D13B2434DE5A00DB4065 /* GoalSelection */; };
 		D2FF695A242E5A9D007182F0 /* FacebookCore in Frameworks */ = {isa = PBXBuildFile; productRef = D2FF6959242E5A9D007182F0 /* FacebookCore */; };
 		D2FF695C242E5A9D007182F0 /* FacebookLogin in Frameworks */ = {isa = PBXBuildFile; productRef = D2FF695B242E5A9D007182F0 /* FacebookLogin */; };
 		D2FF695E242E5A9D007182F0 /* FacebookShare in Frameworks */ = {isa = PBXBuildFile; productRef = D2FF695D242E5A9D007182F0 /* FacebookShare */; };
@@ -49,7 +49,6 @@
 		D269E06D2410F46C000495C3 /* Doable.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Doable.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D269E0702410F46C000495C3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D269E0722410F46C000495C3 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		D269E0742410F46C000495C3 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		D269E0762410F46D000495C3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D269E0792410F46D000495C3 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		D269E07C2410F46D000495C3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -65,8 +64,9 @@
 		D269E0BF2415946B000495C3 /* Logger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Logger.swift; sourceTree = "<group>"; };
 		D269E0C1241595BC000495C3 /* With.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = With.swift; sourceTree = "<group>"; };
 		D269E0C724159D28000495C3 /* ComposableArchitecture */ = {isa = PBXFileReference; lastKnownFileType = folder; path = ComposableArchitecture; sourceTree = "<group>"; };
-		D269E0CB241818C7000495C3 /* LocalCountView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalCountView.swift; sourceTree = "<group>"; };
 		D269E0CD24181B3B000495C3 /* InitialView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitialView.swift; sourceTree = "<group>"; };
+		D2A96DD5243617E3001398AA /* GoalsList */ = {isa = PBXFileReference; lastKnownFileType = folder; path = GoalsList; sourceTree = "<group>"; };
+		D2F6D13A2434DD6C00DB4065 /* GoalSelection */ = {isa = PBXFileReference; lastKnownFileType = folder; path = GoalSelection; sourceTree = "<group>"; };
 		D2FF695F242E5B33007182F0 /* Signing */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Signing; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -75,8 +75,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D2A96DD7243617F8001398AA /* GoalsList in Frameworks */,
 				D269E0CA24159EBD000495C3 /* ComposableArchitecture in Frameworks */,
 				D2FF695A242E5A9D007182F0 /* FacebookCore in Frameworks */,
+				D2F6D13C2434DE5A00DB4065 /* GoalSelection in Frameworks */,
 				D2FF6961242E5B99007182F0 /* Signing in Frameworks */,
 				D2FF695E242E5A9D007182F0 /* FacebookShare in Frameworks */,
 				D2FF695C242E5A9D007182F0 /* FacebookLogin in Frameworks */,
@@ -103,6 +105,8 @@
 		D269E0642410F46C000495C3 = {
 			isa = PBXGroup;
 			children = (
+				D2A96DD5243617E3001398AA /* GoalsList */,
+				D2F6D13A2434DD6C00DB4065 /* GoalSelection */,
 				D2FF695F242E5B33007182F0 /* Signing */,
 				D269E0C724159D28000495C3 /* ComposableArchitecture */,
 				D269E06F2410F46C000495C3 /* Doable */,
@@ -129,8 +133,6 @@
 				D269E0702410F46C000495C3 /* AppDelegate.swift */,
 				D269E0722410F46C000495C3 /* SceneDelegate.swift */,
 				D269E0CD24181B3B000495C3 /* InitialView.swift */,
-				D269E0742410F46C000495C3 /* ContentView.swift */,
-				D269E0CB241818C7000495C3 /* LocalCountView.swift */,
 				D269E0C3241596EB000495C3 /* Functional Extensions */,
 				D269E0BF2415946B000495C3 /* Logger.swift */,
 				D269E0BD24129559000495C3 /* AppAction.swift */,
@@ -214,6 +216,8 @@
 				D2FF695B242E5A9D007182F0 /* FacebookLogin */,
 				D2FF695D242E5A9D007182F0 /* FacebookShare */,
 				D2FF6960242E5B99007182F0 /* Signing */,
+				D2F6D13B2434DE5A00DB4065 /* GoalSelection */,
+				D2A96DD6243617F8001398AA /* GoalsList */,
 			);
 			productName = Doable;
 			productReference = D269E06D2410F46C000495C3 /* Doable.app */;
@@ -340,8 +344,6 @@
 				D269E0732410F46C000495C3 /* SceneDelegate.swift in Sources */,
 				D269E0C02415946B000495C3 /* Logger.swift in Sources */,
 				D269E0CE24181B3C000495C3 /* InitialView.swift in Sources */,
-				D269E0CC241818C7000495C3 /* LocalCountView.swift in Sources */,
-				D269E0752410F46C000495C3 /* ContentView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -682,6 +684,14 @@
 		D269E0C924159EBD000495C3 /* ComposableArchitecture */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = ComposableArchitecture;
+		};
+		D2A96DD6243617F8001398AA /* GoalsList */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = GoalsList;
+		};
+		D2F6D13B2434DE5A00DB4065 /* GoalSelection */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = GoalSelection;
 		};
 		D2FF6959242E5A9D007182F0 /* FacebookCore */ = {
 			isa = XCSwiftPackageProductDependency;

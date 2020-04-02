@@ -7,12 +7,14 @@
 //
 
 import Foundation
+import GoalSelection
 import Signing
 
 struct AppState {
     var title = "Doable"
     var count = 0
     var isLoggedIn = false
+    var goals: [String] = []
 }
 
 extension AppState {
@@ -22,6 +24,17 @@ extension AppState {
         }
         set {
             self.isLoggedIn = newValue.isLoggedIn
+        }
+    }
+}
+
+extension AppState {
+    var goalSelectionState: GoalSelectionState {
+        get {
+            GoalSelectionState(goals: goals)
+        }
+        set {
+            self.goals = newValue.goals
         }
     }
 }

@@ -8,31 +8,33 @@
 
 import Foundation
 import Signing
+import GoalSelection
+import GoalsList
 
 enum AppAction {
-    case counter(CounterAction)
-    case goal(GoalAction)
+    case goalSelection(GoalSelectionAction)
     case signing(SigningAction)
+    case goalsList(GoalsListAction)
 
-    var counter: CounterAction? {
+    var goalsList: GoalsListAction? {
         get {
-            guard case let .counter(value) = self else { return nil }
+            guard case let .goalsList(value) = self else { return nil }
             return value
         }
         set {
-            guard case .counter = self, let newValue = newValue else { return }
-            self = .counter(newValue)
+            guard case .goalsList = self, let newValue = newValue else { return }
+            self = .goalsList(newValue)
         }
     }
 
-    var goal: GoalAction? {
+    var goalSelection: GoalSelectionAction? {
         get {
-            guard case let .goal(value) = self else { return nil }
+            guard case let .goalSelection(value) = self else { return nil }
             return value
         }
         set {
-            guard case .goal = self, let newValue = newValue else { return }
-            self = .goal(newValue)
+            guard case .goalSelection = self, let newValue = newValue else { return }
+            self = .goalSelection(newValue)
         }
     }
 
