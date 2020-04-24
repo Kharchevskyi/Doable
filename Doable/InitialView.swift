@@ -53,7 +53,7 @@ struct InitialView: View {
     }
 
     static func build() -> InitialView {
-        let appReducer: (inout AppState, AppAction) -> Void = combine(
+        let appReducer: Reducer<AppState, AppAction> = combine(
             pullback(goalSelectionReducer, value: \.goalSelectionState , action: \.goalSelection),
             pullback(signingReducer, value: \.signingState, action: \.signing),
             pullback(goalsListReducer, value: \.goals, action: \.goalsList)

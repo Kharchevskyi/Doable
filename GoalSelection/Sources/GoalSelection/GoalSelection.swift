@@ -16,13 +16,18 @@ public enum GoalSelectionAction {
     case remove
 }
 
-public func goalSelectionReducer(state: inout GoalSelectionState, action: GoalSelectionAction) {
+public func goalSelectionReducer(
+    state: inout GoalSelectionState,
+    action: GoalSelectionAction
+) -> [Effect<GoalSelectionAction>] {
     switch action {
     case .add:
         state.goals.append("New goal \(state.goals.count)")
+        return []
     case .remove:
-        guard !state.goals.isEmpty else { return }
+        guard !state.goals.isEmpty else { return [] }
         state.goals.removeLast()
+        return []
     }
 }
 

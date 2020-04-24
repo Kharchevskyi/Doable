@@ -16,12 +16,14 @@ public struct SigningState {
     }
 }
 
-public func signingReducer(state: inout SigningState, action: SigningAction) {
+public func signingReducer(state: inout SigningState, action: SigningAction) -> [Effect<SigningAction>]{
     switch action {
     case .facebookLogIn:
         state.isLoggedIn = true
+        return []
     case .facebookLogOut:
         state.isLoggedIn = false
+        return []
     }
 }
 
