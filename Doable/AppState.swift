@@ -13,17 +13,21 @@ import Signing
 struct AppState {
     var title = "Doable"
     var count = 0
-    var isLoggedIn = false
+
     var goals: [String] = []
+
+    var isLoggedIn = false
+    var isLoggedInButtonDisabled = false
 }
 
 extension AppState {
     var signingState: SigningState {
         get {
-            SigningState(isLoggedIn)
+            SigningState(isLoggedIn, isLoggedInButtonDisabled: isLoggedInButtonDisabled)
         }
         set {
-            self.isLoggedIn = newValue.isLoggedIn
+            isLoggedIn = newValue.isLoggedIn
+            isLoggedInButtonDisabled = newValue.isLoggedInButtonDisabled
         }
     }
 }

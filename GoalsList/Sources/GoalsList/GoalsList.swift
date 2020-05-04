@@ -24,27 +24,26 @@ public func goalsListReducer(state: inout [String], action: GoalsListAction) -> 
 }
 
 private func loadGoals() -> Effect<GoalsListAction> {
-    {
+    Effect { callback in
         let documentPath = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0]
         let documentURL = URL(fileURLWithPath: documentPath)
         let goalsURL = documentURL.appendingPathComponent("goals.json")
         guard
             let data = try? Data(contentsOf: goalsURL),
             let goals = try? JSONDecoder().decode([String].self, from: data)
-        else { return nil }
+        else { return }
 
-        return .loadedGoals(goals)
+        callback(.loadedGoals(goals))
     }
 }
 
 private func saveGoal(_ state: [String]) -> Effect<GoalsListAction> {
-    {
+    Effect { _ in
         let data = try! JSONEncoder().encode(state)
         let documentPath = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0]
         let documentURL = URL(fileURLWithPath: documentPath)
         let goalsURL = documentURL.appendingPathComponent("goals.json")
         try! data.write(to: goalsURL)
-        return nil
     }
 }
 

@@ -1,7 +1,33 @@
 import SwiftUI
 import Combine
 
-public typealias Effect<Action> = () -> Action?
+public struct Effect<A> {
+    public let run: (@escaping (A) -> ()) -> Void
+
+    public init(run: @escaping (@escaping (A) -> ()) -> Void) {
+        self.run = run
+    }
+
+    public func map<B>(_ f: @escaping (A) -> B) -> Effect<B> {
+        Effect<B> { callback in
+            self.run { a in callback(f(a)) }
+        }
+    }
+}
+
+public extension Effect {
+    func receive(on queue: DispatchQueue) -> Effect {
+        Effect { callback in
+            self.run { a in
+                queue.async {
+                    callback(a)
+                }
+            }
+        }
+    }
+}
+
+
 public typealias Reducer<Value, Action> = (inout Value, Action) -> [Effect<Action>]
 
 public final class Store<Value, Action>: ObservableObject {
@@ -18,10 +44,9 @@ public final class Store<Value, Action>: ObservableObject {
 
     public func send(_ action: Action) {
         let effects = reducer(&value, action)
+
         effects.forEach { effect in
-            if let action = effect() {
-                self.send(action)
-            }
+            effect.run(self.send)
         }
     }
 
@@ -66,27 +91,29 @@ public func pullback<GlobalAction, LocalAction, GlobalValue, LocalValue>(
         let localEffects: [Effect] = reducer(&globalValue[keyPath: value], localAction)
 
         return localEffects.map { localEffect in
-            { () -> GlobalAction? in
-                guard let localAction = localEffect() else { return nil }
-                var globalAction = globalAction
-                globalAction[keyPath: action] = localAction
-                return globalAction
+            Effect { callback in
+                localEffect.run { localAction in
+                    var globalAction = globalAction
+                    globalAction[keyPath: action] = localAction
+                    callback(globalAction)
+                }
             }
         }
     }
 }
 
-public func logging<Value, Action>(_ reducer: @escaping Reducer<Value, Action>) -> Reducer<Value, Action> {
-    return { value, action in
+public func logging<Value, Action>(
+    _ reducer: @escaping Reducer<Value, Action>
+) -> Reducer<Value, Action> {
+    { value, action in
         let effects: [Effect] = reducer(&value, action)
         let newValue = value
 
-        return [{
+        return [Effect{ _ in
             print("Action: \(action)")
             print("State:")
             dump(newValue)
             print("---")
-            return nil
         }] + effects
     }
 }
